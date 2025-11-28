@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Queja</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #001a33;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* BOTÓN DE REGRESO */
+        .btn-back {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.15);
+            color: cyan;
+            border: 2px solid cyan;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            backdrop-filter: blur(6px);
+        }
+
+        .btn-back:hover {
+            background: cyan;
+            color: #001a33;
+            box-shadow: 0 0 18px cyan;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.07);
+            padding: 40px;
+            width: 90%;
+            max-width: 480px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 32px;
+            text-shadow: 0 0 10px cyan;
+        }
+
+        label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        input, textarea {
+            width: 100%;
+            margin-top: 6px;
+            margin-bottom: 20px;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            box-shadow: 0 0 10px cyan;
+        }
+
+        textarea {
+            resize: none;
+            height: 140px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            font-size: 17px;
+            border: none;
+            border-radius: 12px;
+            background: cyan;
+            color: #001a33;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: white;
+            box-shadow: 0 0 15px cyan;
+        }
+
+        /* Animación */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .mensaje-exito {
+            text-align: center;
+            margin-top: 10px;
+            color: #7dffcf;
+            font-size: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BOTÓN PARA REGRESAR -->
+    <a href="Pagina principal.html" class="btn-back">⟵ Inicio</a>
+
+    <div class="container">
+        <h1>Quejas</h1>
+
+        <label for="titulo">Nombre de la queja:</label>
+        <input type="text" id="titulo" placeholder="Ejemplo: Problema con el temporizador">
+
+        <label for="correo">Correo de contacto:</label>
+        <input type="email" id="correo" placeholder="tucorreo@example.com">
+
+        <label for="desc">Descripción de la queja:</label>
+        <textarea id="desc" placeholder="Describe el problema o sugerencia..."></textarea>
+
+        <button onclick="enviarQueja()">Enviar</button>
+
+        <p class="mensaje-exito" id="msg">✓ ¡Tu queja ha sido enviada!</p>
+    </div>
+
+    <script>
+        function enviarQueja() {
+            const titulo = document.getElementById("titulo").value.trim();
+            const correo = document.getElementById("correo").value.trim();
+            const desc = document.getElementById("desc").value.trim();
+            const msg = document.getElementById("msg");
+
+            if (!titulo || !correo || !desc) {
+                alert("Por favor completa todos los campos.");
+                return;
+            }
+
+            msg.style.display = "block";
+
+            setTimeout(() => {
+                msg.style.display = "none";
+            }, 3000);
+        }
+    </script>
+
+</body>
+</html>
